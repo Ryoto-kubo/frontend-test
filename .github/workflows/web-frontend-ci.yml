@@ -1,0 +1,45 @@
+name: CI - Web Frontend
+
+on:
+  pull_request:
+    paths:
+      - frontend-test/**
+      - .github/workflows/web-frontend-ci.yml
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    # defaults:
+    #   run:
+    #     working-directory: ./frontend-test
+    steps:
+      - name: Check out codes
+        uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16.4.1"
+
+      - name: Show node version
+        run: node -v
+
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - name: Install dependencies
+        run: npm install -w frontend-test
+
+      - name: Run tests and Publish to Chromatic
+        uses: chromaui/action@v1
+        with:
+          # 👇 Chromatic projectToken, refer to the manage page to obtain it.
+          workingDir: frontend-test
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}

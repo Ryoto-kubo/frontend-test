@@ -22,7 +22,7 @@ OpenPopup.play = async () => {
   await userEvent.click(screen.getByRole("button", { name: "追加" }));
   await waitFor(() =>
     expect(
-      screen.getByRole("dialog", { name: "add-todo-popup" })
+      screen.getByRole("dialog", { name: "add-todo-popu" })
     ).toBeInTheDocument()
   );
 };
