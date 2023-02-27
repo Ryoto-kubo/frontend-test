@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { Page } from "components/Page";
 
 export default {
-  title: "sample/1.画面の初期表示",
+  title: "sample/1.画面の初期表示です",
   component: Page,
 } as ComponentMeta<typeof Page>;
 
