@@ -41,5 +41,5 @@ jobs:
         uses: chromaui/action@v1
         with:
           # 👇 Chromatic projectToken, refer to the manage page to obtain it.
+          workingDir: frontend-test
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          workingDir: ./frontend-test
