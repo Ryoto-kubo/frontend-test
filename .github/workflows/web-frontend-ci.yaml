@@ -37,9 +37,10 @@ jobs:
       - name: Install dependencies
         run: npm install -w frontend-test
 
-      - name: Run tests amd Publish to Chromatic
+      - name: Run tests and Publish to Chromatic
         uses: chromaui/action@v1
-        # Chromatic GitHub Action options
-        with:
-          # 👇 Chromatic projectToken, refer to the manage page to obtain it.
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+        run: npm run chromatic -w frontend-test
+        # # Chromatic GitHub Action options
+        # with:
+        #   # 👇 Chromatic projectToken, refer to the manage page to obtain it.
+        #   projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
