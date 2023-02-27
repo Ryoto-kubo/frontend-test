@@ -14,7 +14,7 @@ jobs:
     #     working-directory: ./frontend-test
     steps:
       - name: Check out codes
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - name: Setup Node
         uses: actions/setup-node@v2
