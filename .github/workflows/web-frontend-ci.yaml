@@ -3,7 +3,7 @@ name: CI - Web Frontend
 on:
   pull_request:
     paths:
-      - src/**
+      - frontend-test/**
       - .github/workflows/web-frontend-ci.yaml
 
 jobs:
@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./
+        working-directory: ./frontend-test
     steps:
       - name: Check out codes
         uses: actions/checkout@v3
@@ -35,13 +35,14 @@ jobs:
             ${{ runner.os }}-
 
       - name: Install dependencies
-        run: npm install --legacy-peer-deps
+        run: npm ci
 
       - name: Build Storybook
         run: npm run build-storybook
 
-      - name: Serve Storybook and run tests
-        run: |
-          npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
-            "npx http-server storybook-static --port 6006 --silent" \
-            "npx wait-on tcp:6006 && yarn test-storybook"
+      - name: Run tests amd Publish to Chromatic
+        uses: chromaui/action@v1
+        # Chromatic GitHub Action options
+        with:
+          # 👇 Chromatic projectToken, refer to the manage page to obtain it.
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
