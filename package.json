@@ -2,7 +2,7 @@
   "name": "packages",
   "version": "1.0.0",
   "workspaces": [
-    "frontend-tes/",
+    "frontend-test/",
     "packages/"
   ]
 }
