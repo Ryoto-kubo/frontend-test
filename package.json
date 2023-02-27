@@ -1,16 +1,6 @@
 {
   "name": "packages",
   "version": "1.0.0",
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "npm run build-storybook -w frontend-test ",
-    "test-storybook": "test-storybook",
-    "chromatic": "chromatic --project-token=CHROMATIC_PROJECT_TOKEN"
-  },
   "workspaces": [
     "frontend-test/",
     "packages/"

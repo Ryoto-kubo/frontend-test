@@ -42,6 +42,4 @@ jobs:
         with:
           # 👇 Chromatic projectToken, refer to the manage page to obtain it.
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          workingDir: frontend-test/
-        # run: npm run chromatic -w frontend-test
-        # # Chromatic GitHub Action options
+          workingDir: ./frontend-test
